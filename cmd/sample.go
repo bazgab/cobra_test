@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 var sampleCmd = &cobra.Command{
@@ -27,7 +28,8 @@ var versionCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(sampleCmd)
 	rootCmd.AddCommand(versionCmd)
-	sampleCmd.Flags().StringP("name", "n", "gabriel", "Input name to be displayed")
+	i := os.Getenv("GOPATH")
+	sampleCmd.Flags().StringP("name", "N", i, "Input name to be displayed")
 
 }
 
