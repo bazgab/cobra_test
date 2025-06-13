@@ -15,11 +15,18 @@ var sampleCmd = &cobra.Command{
 	Run: sampleCmdFunc,
 }
 
+var versionCmd = &cobra.Command{
+	Use:   "version",
+	Short: "Print sample version",
+	Long:  `Print sample version`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("1.0")
+	},
+}
+
 func init() {
 	rootCmd.AddCommand(sampleCmd)
-
-	sampleCmd.Flags().BoolP("help", "h", false, "Display command help")
-	sampleCmd.Flags().BoolP("version", "v", false, "Print sample version")
+	rootCmd.AddCommand(versionCmd)
 	sampleCmd.Flags().StringP("name", "n", "gabriel", "Input name to be displayed")
 
 }
